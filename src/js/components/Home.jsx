@@ -1,26 +1,29 @@
 import React from "react";
+import Navbar from "./Navbar";
+import Jumbotron from "./Jumbotron";
+import Cards from "./Cards";
+import Footer from "./footer.jsx";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
 
 //create your first component
 const Home = () => {
+	const cardProperties = [
+		{ title: "Titulo1", parrafo: "Parrafo1", image: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/16F45/production/_91912049_thinkstockphotos-527112921.jpg.webp" },
+		{ title: "Titulo2", parrafo: "Parrafo2", image: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/16F45/production/_91912049_thinkstockphotos-527112921.jpg.webp" },
+		{ title: "Titulo3", parrafo: "Parrafo3", image: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/16F45/production/_91912049_thinkstockphotos-527112921.jpg.webp" },
+		{ title: "Titulo4", parrafo: "Parrafo4", image: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/16F45/production/_91912049_thinkstockphotos-527112921.jpg.webp" }
+	]
 	return (
 		<div className="text-center">
-            
-
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<Navbar />
+			<Jumbotron />
+			<div className="d-flex justify-content-center mt-5">
+				{cardProperties.map((card, item) => {
+					return (<Cards title={card.title} parrafo={card.parrafo} image={card.image} />)
+				})}
+			</div>
+			<Footer/>
 		</div>
 	);
 };
